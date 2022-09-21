@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@nuxt/http": "latest",
-    "dotenv": "^16.0.2",
     "express": "latest",
+    "mongoose": "^6.6.1",
     "nuxt": "latest"
   },
   "devDependencies": {
@@ -22,7 +22,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^7.20.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "sass": "^1.54.9",
+    "sass": "latest",
     "sass-loader": "10"
   }
 }

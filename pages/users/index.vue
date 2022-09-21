@@ -8,7 +8,8 @@
       <ul class="users">
         <li v-for="(user, index) in users" :key="index" class="user">
           <nuxt-link :to="{ name: 'users-id', params: { id: index }}">
-            {{ user.name }} {{ user.email ?? 'sans email' }}
+            {{ user.name }}
+            {{ user.email ?? 'sans email' }}
           </nuxt-link>
         </li>
       </ul>

@@ -1,19 +1,32 @@
 const express = require('express')
-require('dotenv').config()
-
 // Create express instance
 const app = express()
 
+// Connect to mongodb
+const mongoose = require('mongoose')
+const uri = `mongodb+srv://${process.env.DB_NODE}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`
+mongoose.connect(uri,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  },
+  (err) => {
+    // eslint-disable-next-line no-console
+    if (err) { return console.log('Connection error =>' + err) }
+    // eslint-disable-next-line no-console
+    console.log('MongoDB is connected')
+  }
+)
+
 // Require API routes
-const users = require('./routes/users')
-const test = require('./routes/test')
+const userController = require('./controllers/UserController')
 
 // Import API Routes
-app.use(users)
-app.use(test)
+app.use(userController)
 
-// Export express app
-module.exports = app
+app.get('/', function (req, res, next) {
+  res.status(200).json({ status: 'Open' })
+})
 
 // Start standalone server if directly running
 if (require.main === module) {
@@ -23,3 +36,6 @@ if (require.main === module) {
     console.log(`API server listening on port ${port}`)
   })
 }
+
+// Export express app
+module.exports = app
