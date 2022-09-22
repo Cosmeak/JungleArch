@@ -54,16 +54,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://http.nuxtjs.org
-    '@nuxt/http'
   ],
-
-  /*
-  ** Server Middleware
-  */
-  serverMiddleware: {
-    '/api': '~/api'
-  },
 
   /*
   ** For deployment you might want to edit host and port
@@ -78,5 +69,5 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
-  }
+  },
 }

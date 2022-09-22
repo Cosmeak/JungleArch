@@ -6,7 +6,6 @@
         nuxt-express
       </h1>
       <div>
-        {{ test.status }}
         <div class="links">
           <a
             href="/users"
@@ -40,12 +39,7 @@
 
 <script>
 export default {
-  async asyncData ({ $http }) {
-    const test = await $http.$get('/api')
-    return {
-      test
-    }
-  }
+
 }
 </script>
 
