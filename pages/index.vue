@@ -33,13 +33,29 @@
           GitHub
         </a>
       </div>
+      <div>
+        <p v-for="(user, index) in users" :key="index">
+          {{ user.email }}
+        </p>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-
+  data () {
+    return {
+      users: []
+    }
+  },
+  mounted () {
+    this.$axios.$get(
+      '/api/v1/users'
+    ).then((res) => {
+      window.console.log(this.users)
+    })
+  }
 }
 </script>
 

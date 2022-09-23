@@ -54,8 +54,31 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
 
+  axios: {
+    baseURL: 'http://localhost:3001/api/v1/',
+    proxy: true
+  },
+
+  publicRuntimeConfig: {
+    axios: {
+      browserBaseURL: process.env.BROWSER_BASE_URL
+    }
+  },
+
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: process.env.BASE_URL
+    }
+  },
+
+  // proxy: {
+  //   '/api/v1': { target: 'http://localhost:3001/api/v1/', pathRewrite: {'^/api/v1/': ''}, changeOrigin: true }
+  // },
+  
   /*
   ** For deployment you might want to edit host and port
   */
@@ -70,4 +93,7 @@ export default {
   */
   build: {
   },
+
+  serverMiddleware: [
+  ]
 }
